@@ -2,7 +2,7 @@ import { React } from "react";
 import { Button, View, Text } from "react-native";
 import { useUnit } from "effector-react";
 import { useNavigation } from "@react-navigation/native";
-import styles from "../styles.tsx";
+import styles, { blue } from "../styles.tsx";
 import PieSlice from "../components/PieSlice";
 import Pie from "../components/Pie"
 import {$naps, setNaps, addNap, removeNap } from '../store'
@@ -22,7 +22,7 @@ function Schedule() {
                                            angle: ((nap.duration[0] * 60 + nap.duration[1]) / 1440) * 360 }
                                            } 
                                      )
-   slices.push( {angle: 0, rotation: (hours * 60 + mins) / 1440 * 360, color: "green"} )
+   slices.push( {angle: 0, rotation: (hours * 60 + mins) / 1440 * 360, color: "red"} )
 
   const minutesToSleep = naps.reduce( (acc, current) => acc + current.duration[0] * 60 + current.duration[1], 0 );
   return (
@@ -34,10 +34,6 @@ function Schedule() {
             slices
                 }/> 
             <Text style={{fontSize: 20}}>Total sleeping time: { (minutesToSleep / 60) > 1 && Math.floor(minutesToSleep / 60) + "h" } {minutesToSleep % 60 + "m"}</Text>
-      <Button
-        onPress={() => navigation.navigate("Edit schedule")}
-        title="Edit schedule"
-      ></Button>
     </View>
   );
 }

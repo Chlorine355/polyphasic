@@ -4,10 +4,14 @@ import { View, Text, Button, ScrollView, TouchableOpacity } from "react-native";
 import { $naps, setNaps, addNap, removeNap } from "../store";
 import {TimePicker} from '../components/TimePicker'
 import Icon from 'react-native-vector-icons/FontAwesome6';
+import styles, { blue } from "../styles.tsx";
 
 
 const EditSchedule = () => {
   const [naps] = useUnit([$naps]);
+
+  // naps.sort( (a, b) => {if ( (a.time[0] * 60 + a.time[1]) > (b.time[0] * 60 + b.time[1]) )  {return 1} else {return -1}} )
+
   const scrollViewRef = useRef();
   return (<View style={{flex: 1}}>
   <TouchableOpacity
@@ -18,20 +22,20 @@ const EditSchedule = () => {
           }}
 
         >
-        <Icon name="plus" size={30} color={"#2E5266"}/>
+        <Icon name="plus" size={30} color={blue}/>
         </TouchableOpacity>
     <ScrollView contentContainerStyle={{display: "flex", gap: 10, padding: 10, paddingBottom: 130}} ref={scrollViewRef}>
       {naps.map((item) => {
         return (
           <View key={item.id} style={{display: "flex", flexDirection: "row", padding: 20, gap: 60, alignItems: "center", backgroundColor: "white", borderRadius: 15}}>
                 <View style={{display: "flex", flexDirection: "row", gap: 10, alignItems: "center"}}>
-                    <Icon name="clock" size={30} color={"#2E5266"}/>
+                    <Icon name="clock" size={30} color={blue}/>
                     <TimePicker mode='time' time={item.time} napId={item.id} textStyle={{fontSize: 25, color: "black"}}/>
                 </View>
 
                                 <View style={{display: "flex", flexDirection: "row", gap: 10, alignItems: "center"}}>
 
-                <Icon name="hourglass-half" size={30} color={"#2E5266"}/>
+                <Icon name="hourglass-half" size={30} color={blue}/>
                 <TimePicker mode='duration' duration={item.duration} napId={item.id} textStyle={{fontSize: 20, color: "black"}}/>
                                 </View>
 

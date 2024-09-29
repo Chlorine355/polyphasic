@@ -1,9 +1,9 @@
-import styles from '../styles.tsx'
+import styles, {blue} from '../styles.tsx'
 import {View, TouchableWithoutFeedback} from 'react-native';
 
 
 export default function PieSlice(props) {
-    const {rotation = 0, angle = 0, popupText = "", color = "#0078ff"} = props;
+    const {rotation = 0, angle = 0, popupText = "", color = blue} = props;
     // 30deg = 41 width
     // 45deg = 63 width
     // 72deg = 112 width

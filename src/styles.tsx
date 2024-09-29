@@ -2,6 +2,8 @@ import {
     StyleSheet
 } from 'react-native'
 
+
+export const blue = "#005792";
 const styles = StyleSheet.create({
     title: {
         fontSize: 32,
